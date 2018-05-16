@@ -1,0 +1,57 @@
+<template>
+  <section>
+    <p>회원가입 화면인건가</p>
+    <a href="/#/">돌아가자</a>
+    <input type="email" v-model="email" placeholder="아이디" id="signupEmail"/>
+    <input type="password" v-model="password" placeholder="비밀번호" id="singupPassword"/>
+    <button id="signupButton" @click="signup(email, password)">가입!</button>
+  </section>
+</template>
+
+<script>
+export default {
+  name: 'Signup',
+  data() {
+    return {
+      email: "",
+      password: ""
+    }
+  },
+  methods: {
+    checkForm(email, password) {
+      if (!(email && password))
+        return false
+      return true
+    },
+    signup(email, password) {
+      if(!this.checkForm(email, password))
+        return false
+
+
+      const baseURI = 'https://tstserv.herokuapp.com'
+      this.$http.post(`${baseURI}/register`, {
+          params: {
+              email: email,
+              password: password
+          }
+      })
+      .then((result) => {
+        let data = result.data
+        this.signupSuccessed(data.session)
+      })
+      .catch((err) => {
+        alert(err)
+      })
+    },
+    signupSuccessed(session) {
+      this.$session.start()
+      this.$session.set('jwt', session)
+      this.$router.push('/')
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>
