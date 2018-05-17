@@ -19,9 +19,9 @@ export default {
   },
   methods: {
     checkForm(email, password) {
-      if (!(email && password))
-        return false
-      return true
+      if (email && password)
+        return true
+      return false
     },
     signin(email, password) {
       if(!this.checkForm(email, password))
