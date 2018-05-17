@@ -1,6 +1,6 @@
 <template>
   <section id="calendar">
-    <FullCalendar :events="events"></FullCalendar>
+    <FullCalendar :events="events" :selectable=false :editable=false></FullCalendar>
   </section>
 </template>
 

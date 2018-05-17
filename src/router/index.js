@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Index from '@/components/Index'
 import Signin from '@/components/Signin'
 import Signup from '@/components/Signup'
+import Profile from '@/components/Profile'
+import MyProfile from '@/components/MyProfile'
 import Calendar from '@/components/Calendar'
 import Chat from '@/components/Chat'
 import PageNotFound from '@/components/PageNotFound'
@@ -20,6 +22,16 @@ export default new Router({
       path: '/signin',
       name: 'Signin',
       component: Signin
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile
+    },
+    {
+      path: '/myprofile',
+      name: 'MyProfile',
+      component: MyProfile
     },
     {
       path: '/signup',
