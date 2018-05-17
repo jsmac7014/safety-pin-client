@@ -1,16 +1,19 @@
 <template>
   <section id="calendar">
     <FullCalendar :events="events" :selectable=false :editable=false></FullCalendar>
+    <!-- <AcceptRequestment :message="message"/> -->
   </section>
 </template>
 
 <script>
 import { FullCalendar } from 'vue-full-calendar'
+import AcceptRequestment from '@/components/acceptRequestment'
 
 export default {
   name: 'Calendar',
   components: {
     FullCalendar,
+    AcceptRequestment
   },
   data () {
     return {
@@ -21,7 +24,10 @@ export default {
             end : '2018-05-17T13:30:00',
             allDay : false,
         },
-      ]
+      ],
+      message: {
+        text: "제 상담을 받아주시겄나요?"
+      }
     }
   },
   methods: {
