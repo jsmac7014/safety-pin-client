@@ -19,19 +19,40 @@ export default {
     return {
       events: [
         {
-            title  : '방진혁 부모님',
-            start  : '2018-05-17T12:30:00',
-            end : '2018-05-17T13:30:00',
-            allDay : false,
+          title  : '방진혁 부모님',
+          start  : '2018-05-17T12:30:00',
+          end : '2018-05-17T13:30:00',
+          allDay : false,
         },
       ],
       message: {
         text: "제 상담을 받아주시겄나요?"
-      }
+      },
+      session: null
     }
   },
   methods: {
-// :(
+    loadCalendar(session) {
+      const baseURI = 'https://tstserv.herokuapp.com'
+      this.$http.get(`${baseURI}/calendar`, {
+        params: {
+          "session": session
+        }
+      })
+      .then((result) => {
+        this.events = result.data.calendar
+      })
+      .catch((err) => {
+        alert(err)
+      })
+    },
+    getSession () {
+      return this.$session.get('session')
+    }
+  },
+  created() {
+    this.session = this.getSession()
+    this.loadCalendar(this.session)
   }
 }
 </script>

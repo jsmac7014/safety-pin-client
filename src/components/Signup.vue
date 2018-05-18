@@ -14,7 +14,10 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      name: "",
+      classNumber: "",
+      intro: ""
     }
   },
   methods: {
@@ -26,7 +29,6 @@ export default {
     signup(email, password) {
       if(!this.checkForm(email, password))
         return false
-
 
       const baseURI = 'https://tstserv.herokuapp.com'
       this.$http.post(`${baseURI}/register`, {

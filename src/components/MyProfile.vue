@@ -4,7 +4,7 @@
         이름:<input type="text" v-model="profile.name"/><br/>
         담당반:<input type="text" v-model="profile.classNumber"/><br/>
         한줄소개:<textarea v-model="profile.intro"></textarea><br/>
-        <button>적용</button>
+        <button @click="updateProfile(session, profile)">적용</button>
     </section>
 </template>
 
@@ -26,7 +26,7 @@ export default {
             const baseURI = 'https://tstserv.herokuapp.com'
             this.$http.get(`${baseURI}/profile`, {
                 params: {
-                    session: this.session
+                    "session": session
                 }
             })
             .then((result) => {
@@ -38,12 +38,12 @@ export default {
                 alert(err)
             })
         },
-        updateProfile(session) {
+        updateProfile(session, profile) {
             const baseURI = 'https://tstserv.herokuapp.com'
             this.$http.put(`${baseURI}/profile`, {
                 params: {
-                    session: this.session,
-                    profile: this.profile
+                    "session": session,
+                    "profile": profile
                 }
             })
             .then((result) => {
@@ -58,7 +58,8 @@ export default {
         }
     },
     created() {
-        this.loadProfile(this.getSession())
+        this.session = this.getSession()
+        this.loadProfile(this.session)
     }
 }
 </script>
