@@ -1,18 +1,25 @@
 <template>
   <section>
+    <ul>
 
+    </ul>
+    <input type="text" />
+    <button>추가</button>
   </section>
 </template>
 
 <script>
 export default {
     name: "Chat",
-    // data() {
-    //     return {
-    //         isConnected: false,
-    //         socketMessage: ''
-    //     }
-    // },
+    props: [
+      "roomId"
+    ],
+    data() {
+        return {
+            isConnected: false,
+            socketMessage: ''
+        }
+    },
     // sockets: {
     //     connect() {
     //         this.isConnected = true;

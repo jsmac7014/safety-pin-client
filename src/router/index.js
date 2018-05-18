@@ -6,7 +6,7 @@ import Signup from '@/components/Signup'
 import Profile from '@/components/Profile'
 import MyProfile from '@/components/MyProfile'
 import Calendar from '@/components/Calendar'
-import Chat from '@/components/Chat'
+import ChatList from '@/components/ChatList'
 import PageNotFound from '@/components/PageNotFound'
 
 Vue.use(Router)
@@ -46,7 +46,7 @@ export default new Router({
     {
       path: '/chat',
       name: 'Chat',
-      component: Chat
+      component: ChatList
     },
     {
       path: "*",

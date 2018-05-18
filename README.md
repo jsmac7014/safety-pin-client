@@ -1,21 +1,32 @@
 # safety-pin-client
 
-> mocon
+## 추가 되어있어야 하는 것들
 
-## Build Setup
+회원가입-로그인
+프로필 추가, 수정, 조회
+학부모 방문 요청 수락/거절
+학부모 방문 일정 관리
+학부모와의 채팅 기능
+학부모 전체 공지
 
-``` bash
-# install dependencies
-npm install
+학부모/선생님 일정 모두 확인
+학부모 pin코드 검증
 
-# serve with hot reload at localhost:8080
-npm run dev
+##dependency
 
-# build for production with minification
-npm run build
+###dependencies
+Vue.js
+Vue-router
+Vue-session
+Vue-socket.io
+Axios
+Vue-Full-Calendar
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+###devDependencies
+babel
+babel
+babel....
+webpack
+webpack
+webpack....
+postcss
