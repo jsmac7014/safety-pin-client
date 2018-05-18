@@ -1,6 +1,6 @@
 <template>
     <section>
-        <a href="/#/profile">뒤로 가기</a><br/>
+        <router-link to="/profile">뒤로 가기</router-link><br/>
         이름:<input type="text" v-model="profile.name"/><br/>
         담당반:<input type="text" v-model="profile.classNumber"/><br/>
         한줄소개:<textarea v-model="profile.intro"></textarea><br/>

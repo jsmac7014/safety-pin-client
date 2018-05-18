@@ -1,7 +1,7 @@
 <template>
   <section>
     <p>회원가입 화면인건가</p>
-    <a href="/#/">돌아가자</a>
+    <router-link to="/">돌아가자</router-link>
     <input type="email" v-model="email" placeholder="아이디" id="signupEmail"/>
     <input type="password" v-model="password" placeholder="비밀번호" id="singupPassword"/>
     <button id="signupButton" @click="signup(email, password)">가입!</button>

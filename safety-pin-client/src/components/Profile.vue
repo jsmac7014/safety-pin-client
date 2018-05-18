@@ -1,8 +1,8 @@
 <template>
     <section>
-        <a href="/#/">뒤로 가기</a>
+        <router-link to="/">뒤로 가기</router-link>
         <ParentsProfile />
-        <a href="/#/myprofile">프로필 수정</a>
+        <router-link to="/myprofile">프로필 수정</router-link>
     </section>
 </template>
 
