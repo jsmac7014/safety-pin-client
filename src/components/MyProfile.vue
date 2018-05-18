@@ -1,13 +1,65 @@
 <template>
     <section>
-        <a href="/#/profile">뒤로 가기</a>
+        <a href="/#/profile">뒤로 가기</a><br/>
+        이름:<input type="text" v-model="profile.name"/><br/>
+        담당반:<input type="text" v-model="profile.classNumber"/><br/>
+        한줄소개:<textarea v-model="profile.intro"></textarea><br/>
         <button>적용</button>
     </section>
 </template>
 
 <script>
 export default {
-    name: 'MyProfile'
+    name: 'MyProfile',
+    data() { 
+        return {
+            session: null,
+            profile: {
+                name: "로딩 중",
+                classNumber: "로딩 중",
+                intro: "로딩 중"
+            }
+        }
+    },
+    methods: {
+        loadProfile(session) {
+            const baseURI = 'https://tstserv.herokuapp.com'
+            this.$http.get(`${baseURI}/profile`, {
+                params: {
+                    session: this.session
+                }
+            })
+            .then((result) => {
+                this.profile.name = result.data.profile.name
+                this.profile.classNumber = result.data.profile.classNumber
+                this.profile.intro = result.data.profile.intro
+            })
+            .catch((err) => {
+                alert(err)
+            })
+        },
+        updateProfile(session) {
+            const baseURI = 'https://tstserv.herokuapp.com'
+            this.$http.put(`${baseURI}/profile`, {
+                params: {
+                    session: this.session,
+                    profile: this.profile
+                }
+            })
+            .then((result) => {
+                
+            })
+            .catch((err) => {
+                alert(err)
+            })
+        },
+        getSession () {
+            return this.$session.get('session')
+        }
+    },
+    created() {
+        this.loadProfile(this.getSession())
+    }
 }
 </script>
 

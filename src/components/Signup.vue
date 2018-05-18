@@ -45,7 +45,7 @@ export default {
     },
     signupSuccessed(session) {
       this.$session.start()
-      this.$session.set('jwt', session)
+      this.$session.set('session', session)
       this.$router.push('/')
     }
   }
