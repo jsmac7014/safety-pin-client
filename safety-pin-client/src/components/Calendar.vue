@@ -46,6 +46,24 @@ export default {
         alert(err)
       })
     },
+    loadRequestment() {
+      const baseURI = 'https://tstserv.herokuapp.com'
+      this.$http.get(`${baseURI}/request`, {
+        params: {
+          "session": session
+        }
+      })
+      .then((result) => {
+        if (result.data.request) {
+
+        } else {
+
+        }
+      })
+      .catch((err) => {
+        alert(err)
+      })
+    },
     getSession () {
       return this.$session.get('session')
     }
@@ -53,6 +71,9 @@ export default {
   created() {
     this.session = this.getSession()
     this.loadCalendar(this.session)
+    setInterval(() => {
+      this.loadRequestment()
+    }, 5000)
   }
 }
 </script>
