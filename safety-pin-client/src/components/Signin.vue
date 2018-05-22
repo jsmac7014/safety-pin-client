@@ -1,10 +1,11 @@
 <template>
   <section>
-    <p>로그인 화면인건가</p>
-    <router-link to="/">돌아가자</router-link>
-    <input type="email" v-model="email" id="signinEmail" placeholder="아이디"/>
-    <input type="password" v-model="password" id="signinPassword" placeholder="비밀번호"/>
-    <button id="LoginButton" @click="signin(email, password)">로그인!</button>
+    <p>로그인</p>
+    <form>
+      <input type="email" v-model="email" id="signinEmail" placeholder="아이디"/>
+      <input type="password" v-model="password" id="signinPassword" placeholder="비밀번호"/>
+      <button id="LoginButton" @click="signin(email, password)">로그인!</button>
+    </form>
   </section>
 </template>
 

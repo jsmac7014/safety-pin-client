@@ -1,17 +1,17 @@
 <template>
     <section>     
-        <p @click="sayId()">처음 들어가면 있을거같은 거</p>
+        <p>메인</p>
         <div v-if="!signed">
             <button @click="replaceLink('/Signin')">
-                로그인 ㄱㄱ
+                로그인
             </button>
             <button @click="replaceLink('/Signup')">
-                회원가입 ㄱㄱ
+                회원가입
             </button>
         </div>
         <div v-else>
             <button @click="signout()">
-                로그아웃 ㄱㄱ
+                로그아웃
             </button>
         </div>
     </section>

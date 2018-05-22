@@ -1,6 +1,6 @@
 <template>
   <section>
-    <p>404 page not found</p>
+    <p>잘못 된 주소입니다.</p>
   </section>
 </template>
 
