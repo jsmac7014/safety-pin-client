@@ -1,5 +1,6 @@
 <template>
     <section>
+        <p>프로필 설정</p>
         <router-link to="/profile">뒤로 가기</router-link><br/>
         이름:<input type="text" v-model="profile.name"/><br/>
         담당반:<input type="text" v-model="profile.classNumber"/><br/>

@@ -1,5 +1,6 @@
 <template>
   <section id="calendar">
+    <p>방문 일정</p>
     <FullCalendar :events="events" :selectable=false :editable=false></FullCalendar>
     <!-- <AcceptRequestment :message="message"/> -->
   </section>

@@ -1,5 +1,6 @@
 <template>
   <section>
+    <p>채팅 방</p>
     <ul>
 
     </ul>
