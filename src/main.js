@@ -5,9 +5,12 @@ import App from './App'
 import axios from 'axios'
 import VueSession from 'vue-session'
 import router from './router'
-//import VueSocketIO from 'vue-socket.io'
+import Vuesax from 'vuesax'
 
+import 'vuesax/dist/vuesax.css'
+//import VueSocketIO from 'vue-socket.io'
 Vue.prototype.$http = axios
+Vue.use(Vuesax)
 
 //Vue.use(VueSocketIO, 'http://localhost:8080')
 Vue.use(VueSession)
