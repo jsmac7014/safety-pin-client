@@ -6,7 +6,9 @@ import axios from 'axios'
 import VueSession from 'vue-session'
 import router from './router'
 //import VueSocketIO from 'vue-socket.io'
-
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css' 
+Vue.use(Vuetify)
 Vue.prototype.$http = axios
 
 //Vue.use(VueSocketIO, 'http://localhost:8080')
