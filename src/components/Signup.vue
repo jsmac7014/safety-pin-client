@@ -31,7 +31,7 @@ export default {
       if(!this.checkForm(email, password))
         return false
 
-      const baseURI = 'https://tstserv.herokuapp.com'
+      const baseURI = 'https://letscoding.kr:8888/api/v1'
       this.$http.post(`${baseURI}/register`, {
           params: {
               email: email,

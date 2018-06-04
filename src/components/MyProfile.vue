@@ -24,7 +24,7 @@ export default {
     },
     methods: {
         loadProfile(session) {
-            const baseURI = 'https://tstserv.herokuapp.com'
+            const baseURI = 'https://letscoding.kr:8888/api/v1'
             this.$http.get(`${baseURI}/profile`, {
                 params: {
                     "session": session
@@ -40,7 +40,7 @@ export default {
             })
         },
         updateProfile(session, profile) {
-            const baseURI = 'https://tstserv.herokuapp.com'
+            const baseURI = 'https://letscoding.kr:8888/api/v1'
             this.$http.put(`${baseURI}/profile`, {
                 params: {
                     "session": session,

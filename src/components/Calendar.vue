@@ -2,7 +2,7 @@
   <section id="calendar">
     <p>방문 일정</p>
     <FullCalendar :events="events" :selectable=false :editable=false></FullCalendar>
-    <!-- <AcceptRequestment :message="message"/> -->
+    <!-- <AcceptRequestment :message="message" :requestmentId="requestmentId"/> -->
   </section>
 </template>
 
@@ -29,12 +29,13 @@ export default {
       message: {
         text: "제 상담을 받아주시겄나요?"
       },
+      requestmentId: null,
       session: null
     }
   },
   methods: {
     loadCalendar(session) {
-      const baseURI = 'https://tstserv.herokuapp.com'
+      const baseURI = 'https://letscoding.kr:8888/api/v1'
       this.$http.get(`${baseURI}/calendar`, {
         params: {
           "session": session
@@ -48,7 +49,7 @@ export default {
       })
     },
     loadRequestment() {
-      const baseURI = 'https://tstserv.herokuapp.com'
+      const baseURI = 'https://letscoding.kr:8888/api/v1'
       this.$http.get(`${baseURI}/request`, {
         params: {
           "session": session
@@ -56,7 +57,8 @@ export default {
       })
       .then((result) => {
         if (result.data.request) {
-
+          //append requestment components
+          
         } else {
 
         }
