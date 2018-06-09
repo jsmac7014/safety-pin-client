@@ -4,7 +4,7 @@
 		"name": "Safety Pin",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
-	"item": [ 
+	"item": [
 		{
 			"name": "pin",
 			"description": null,
@@ -52,6 +52,11 @@
 					},
 					"response": []
 				},
+
+
+
+
+
 				{
 					"name": "edit",
 					"request": {
@@ -96,7 +101,13 @@
 					},
 					"response": []
 				},
-				{// 
+
+
+
+
+
+
+				{
 					"name": "delete",
 					"request": {
 						"method": "POST",
@@ -135,6 +146,12 @@
 					},
 					"response": []
 				},
+
+
+
+
+
+
 				{
 					"name": "valid",
 					"request": {
@@ -160,6 +177,12 @@
 					},
 					"response": []
 				},
+
+
+
+
+
+
 				{
 					"name": "accept",
 					"request": {
@@ -203,54 +226,15 @@
 					},
 					"response": []
 				},
-				{
-					"name": "request",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/x-www-form-urlencoded"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "session",
-									"value": "23ed96ffb32d7662b71c3f7e096ff3ed94805ad19ad5ffda198459f89860c93707334436b51b7617479e4cd5094fb21af3a90ede71c815bcd09a381863c6ee24",
-									"description": ""
-								},
-								{
-									"key": "teacher",
-									"value": "shinjaeheon@letscoding.kr",
-									"description": ""
-								},
-								{
-									"key": "id",
-									"value": "753WKE",
-									"description": ""
-								}
-							]
-						},
-						"url": {
-							"raw": "https://letscoding.kr:8888/api/v1/pin/request",
-							"protocol": "https",
-							"host": [
-								"letscoding",
-								"kr"
-							],
-							"port": "8888",
-							"path": [
-								"api",
-								"v1",
-								"pin",
-								"request"
-							]
-						}
-					},
-					"response": []
-				},
+
+
+
+
+
+
+
+				
+
 				{
 					"name": "create",
 					"request": {
@@ -299,104 +283,20 @@
 					},
 					"response": []
 				},
-				{
-					"name": "confirm",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/x-www-form-urlencoded"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "session",
-									"value": "23ed96ffb32d7662b71c3f7e096ff3ed94805ad19ad5ffda198459f89860c93707334436b51b7617479e4cd5094fb21af3a90ede71c815bcd09a381863c6ee24",
-									"description": ""
-								},
-								{
-									"key": "pin",
-									"value": "671578",
-									"description": "",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "https://letscoding.kr:8888/api/v1/pin/confirm",
-							"protocol": "https",
-							"host": [
-								"letscoding",
-								"kr"
-							],
-							"port": "8888",
-							"path": [
-								"api",
-								"v1",
-								"pin",
-								"confirm"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
+
+
+
+
+
+
+
+
 		{
-			"name": "acccount",
+			"name": "account",
 			"description": null,
 			"item": [
 				{
-					"name": "child",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/x-www-form-urlencoded"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "session",
-									"value": "23ed96ffb32d7662b71c3f7e096ff3ed94805ad19ad5ffda198459f89860c93707334436b51b7617479e4cd5094fb21af3a90ede71c815bcd09a381863c6ee24",
-									"description": "",
-									"type": "text"
-								},
-								{
-									"key": "code",
-									"value": "753WKE",
-									"description": "",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "https://letscoding.kr:8888/api/v1/account/child",
-							"protocol": "https",
-							"host": [
-								"letscoding",
-								"kr"
-							],
-							"port": "8888",
-							"path": [
-								"api",
-								"v1",
-								"account",
-								"child"
-							]
-						},
-						"description": "학생정보 요청하"
-					},
-					"response": []
-				},
-				{
-					"name": "register",
+					"name": "t/register",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -419,11 +319,29 @@
 									"value": "password",
 									"description": "",
 									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "name",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "class",
+									"value": "2-6",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "info",
+									"value": "아이엠 그루트",
+									"description": "",
+									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "https://letscoding.kr:8888/api/v1/account/register",
+							"raw": "https://letscoding.kr:8888/api/v1/account/t/register",
 							"protocol": "https",
 							"host": [
 								"letscoding",
@@ -434,14 +352,22 @@
 								"api",
 								"v1",
 								"account",
+								"t",
 								"register"
 							]
 						}
 					},
 					"response": []
 				},
+
+
+
+
+
+
+
 				{
-					"name": "login",
+					"name": "t/login",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -468,7 +394,7 @@
 							]
 						},
 						"url": {
-							"raw": "https://letscoding.kr:8888/api/v1/account/login",
+							"raw": "https://letscoding.kr:8888/api/v1/account/t/login",
 							"protocol": "https",
 							"host": [
 								"letscoding",
@@ -479,6 +405,7 @@
 								"api",
 								"v1",
 								"account",
+								"t",
 								"login"
 							]
 						}
@@ -529,6 +456,14 @@
 					},
 					"response": []
 				},
+
+
+
+
+
+
+
+
 				{
 					"name": "send",
 					"request": {

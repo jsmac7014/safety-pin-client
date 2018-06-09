@@ -29,7 +29,7 @@ export default {
         return false
 
       const baseURI = 'https://letscoding.kr:8888/api/v1'
-      this.$http.post(`${baseURI}/login`, {
+      this.$http.post(`${baseURI}/account/t/login`, {
           params: {
               email: email,
               password: password

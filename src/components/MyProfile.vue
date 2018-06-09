@@ -25,7 +25,7 @@ export default {
     methods: {
         loadProfile(session) {
             const baseURI = 'https://letscoding.kr:8888/api/v1'
-            this.$http.get(`${baseURI}/profile`, {
+            this.$http.get(`${baseURI}`, {
                 params: {
                     "session": session
                 }
@@ -41,7 +41,7 @@ export default {
         },
         updateProfile(session, profile) {
             const baseURI = 'https://letscoding.kr:8888/api/v1'
-            this.$http.put(`${baseURI}/profile`, {
+            this.$http.put(`${baseURI}`, {
                 params: {
                     "session": session,
                     "profile": profile

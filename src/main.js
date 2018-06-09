@@ -6,6 +6,7 @@ import VueSession from 'vue-session'
 import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import axios from 'axios'
 
 //import VueSocketIO from 'vue-socket.io'
 

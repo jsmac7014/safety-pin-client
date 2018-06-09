@@ -2,19 +2,23 @@
   <section id="calendar">
     <p>방문 일정</p>
     <FullCalendar :events="events" :selectable=false :editable=false></FullCalendar>
-    <!-- <AcceptRequestment :message="message" :requestmentId="requestmentId"/> -->
+    <ul>
+      <li v-for="requestment in requestments" :key="requestment.id">
+        {{requestment.id}}
+        <button @click="accept(requestment.id)">수락</button>
+        <button @click="ignore(requestment.id)">거절</button>
+      </li>
+    </ul>
   </section>
 </template>
 
 <script>
 import { FullCalendar } from 'vue-full-calendar'
-import AcceptRequestment from '@/components/acceptRequestment'
 
 export default {
   name: 'Calendar',
   components: {
-    FullCalendar,
-    AcceptRequestment
+    FullCalendar
   },
   data () {
     return {
@@ -26,19 +30,21 @@ export default {
           allDay : false,
         },
       ],
-      message: {
-        text: "제 상담을 받아주시겄나요?"
+      requestments: [{
+        id:123456
       },
-      requestmentId: null,
+      {
+        id:234567
+      }],
       session: null
     }
   },
   methods: {
     loadCalendar(session) {
       const baseURI = 'https://letscoding.kr:8888/api/v1'
-      this.$http.get(`${baseURI}/calendar`, {
+      this.$http.get(`${baseURI}`, {
         params: {
-          "session": session
+          "session": this.session
         }
       })
       .then((result) => {
@@ -50,9 +56,9 @@ export default {
     },
     loadRequestment() {
       const baseURI = 'https://letscoding.kr:8888/api/v1'
-      this.$http.get(`${baseURI}/request`, {
+      this.$http.get(`${baseURI}`, {
         params: {
-          "session": session
+          "session": this.session
         }
       })
       .then((result) => {
@@ -67,16 +73,53 @@ export default {
         alert(err)
       })
     },
+    accept(id) {
+      const baseURI = 'https://letscoding.kr:8888/api/v1'
+      this.$http.get(`${baseURI}/pin/accept`, {
+        params: {
+          session: this.session,
+          id: id
+        }
+      })
+      .then((result) => {
+
+      })
+      .catch((err) => {
+        alert(err)
+      })
+      this.removeItem(id);
+    },
+    ignore(id) {
+      const baseURI = 'https://letscoding.kr:8888/api/v1'
+      this.$http.get(`${baseURI}/pin/ignore`, {
+        params: {
+          session: this.session,
+          id: id
+        }
+      })
+      .then((result) => {
+
+      })
+      .catch((err) => {
+        alert(err)
+      })
+      this.removeItem(id);
+    },
+    removeItem(id) {
+      this.requestments.pop({
+        id: id
+      })
+    },
     getSession () {
       return this.$session.get('session')
     }
   },
   created() {
     this.session = this.getSession()
-    this.loadCalendar(this.session)
-    setInterval(() => {
-      this.loadRequestment()
-    }, 5000)
+    //this.loadCalendar(this.session)
+    // setInterval(() => {
+    //   this.loadRequestment()
+    // }, 5000)
   }
 }
 </script>

@@ -19,6 +19,25 @@ export default {
         return {
             isConnected: false
         }
+    },
+    methods: {
+      loadNewMessage(session) {
+        const baseURI = 'https://letscoding.kr:8888/api/v1'
+        this.$http.get(`${baseURI}`, {
+          params: {
+            "session": session
+          }
+        })
+        .then((result) => {
+          this.events = result.data.calendar
+        })
+        .catch((err) => {
+          alert(err)
+        })
+      },
+      getSession () {
+          return this.$session.get('session')
+      }
     }
 }
 </script>
