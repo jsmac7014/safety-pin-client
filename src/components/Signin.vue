@@ -30,10 +30,8 @@ export default {
 
       const baseURI = 'https://letscoding.kr:8888/api/v1'
       this.$http.post(`${baseURI}/account/t/login`, {
-          params: {
               email: email,
               password: password
-          }
       })
       .then((result) => {
         let data = result.data

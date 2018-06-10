@@ -2,23 +2,19 @@
   <section id="calendar">
     <p>방문 일정</p>
     <FullCalendar :events="events" :selectable=false :editable=false></FullCalendar>
-    <ul>
-      <li v-for="requestment in requestments" :key="requestment.id">
-        {{requestment.id}}
-        <button @click="accept(requestment.id)">수락</button>
-        <button @click="ignore(requestment.id)">거절</button>
-      </li>
-    </ul>
+    <requestmentList />
   </section>
 </template>
 
 <script>
 import { FullCalendar } from 'vue-full-calendar'
+import requestmentList from '@/components/requestmentList.vue'
 
 export default {
   name: 'Calendar',
   components: {
-    FullCalendar
+    FullCalendar,
+    requestmentList
   },
   data () {
     return {
@@ -30,12 +26,6 @@ export default {
           allDay : false,
         },
       ],
-      requestments: [{
-        id:123456
-      },
-      {
-        id:234567
-      }],
       session: null
     }
   },
@@ -52,62 +42,6 @@ export default {
       })
       .catch((err) => {
         alert(err)
-      })
-    },
-    loadRequestment() {
-      const baseURI = 'https://letscoding.kr:8888/api/v1'
-      this.$http.get(`${baseURI}`, {
-        params: {
-          "session": this.session
-        }
-      })
-      .then((result) => {
-        if (result.data.request) {
-          //append requestment components
-          
-        } else {
-
-        }
-      })
-      .catch((err) => {
-        alert(err)
-      })
-    },
-    accept(id) {
-      const baseURI = 'https://letscoding.kr:8888/api/v1'
-      this.$http.get(`${baseURI}/pin/accept`, {
-        params: {
-          session: this.session,
-          id: id
-        }
-      })
-      .then((result) => {
-
-      })
-      .catch((err) => {
-        alert(err)
-      })
-      this.removeItem(id);
-    },
-    ignore(id) {
-      const baseURI = 'https://letscoding.kr:8888/api/v1'
-      this.$http.get(`${baseURI}/pin/ignore`, {
-        params: {
-          session: this.session,
-          id: id
-        }
-      })
-      .then((result) => {
-
-      })
-      .catch((err) => {
-        alert(err)
-      })
-      this.removeItem(id);
-    },
-    removeItem(id) {
-      this.requestments.pop({
-        id: id
       })
     },
     getSession () {

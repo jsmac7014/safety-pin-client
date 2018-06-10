@@ -52,11 +52,6 @@
 					},
 					"response": []
 				},
-
-
-
-
-
 				{
 					"name": "edit",
 					"request": {
@@ -101,12 +96,6 @@
 					},
 					"response": []
 				},
-
-
-
-
-
-
 				{
 					"name": "delete",
 					"request": {
@@ -146,12 +135,6 @@
 					},
 					"response": []
 				},
-
-
-
-
-
-
 				{
 					"name": "valid",
 					"request": {
@@ -177,12 +160,6 @@
 					},
 					"response": []
 				},
-
-
-
-
-
-
 				{
 					"name": "accept",
 					"request": {
@@ -226,15 +203,54 @@
 					},
 					"response": []
 				},
-
-
-
-
-
-
-
-				
-
+				{
+					"name": "request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "session",
+									"value": "23ed96ffb32d7662b71c3f7e096ff3ed94805ad19ad5ffda198459f89860c93707334436b51b7617479e4cd5094fb21af3a90ede71c815bcd09a381863c6ee24",
+									"description": ""
+								},
+								{
+									"key": "teacher",
+									"value": "shinjaeheon@letscoding.kr",
+									"description": ""
+								},
+								{
+									"key": "id",
+									"value": "753WKE",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "https://letscoding.kr:8888/api/v1/pin/request",
+							"protocol": "https",
+							"host": [
+								"letscoding",
+								"kr"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"pin",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "create",
 					"request": {
@@ -283,18 +299,102 @@
 					},
 					"response": []
 				},
-
-
-
-
-
-
-
-
+				{
+					"name": "confirm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "session",
+									"value": "23ed96ffb32d7662b71c3f7e096ff3ed94805ad19ad5ffda198459f89860c93707334436b51b7617479e4cd5094fb21af3a90ede71c815bcd09a381863c6ee24",
+									"description": ""
+								},
+								{
+									"key": "pin",
+									"value": "671578",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://letscoding.kr:8888/api/v1/pin/confirm",
+							"protocol": "https",
+							"host": [
+								"letscoding",
+								"kr"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"pin",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
 		{
 			"name": "account",
 			"description": null,
 			"item": [
+				{
+					"name": "child",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "session",
+									"value": "23ed96ffb32d7662b71c3f7e096ff3ed94805ad19ad5ffda198459f89860c93707334436b51b7617479e4cd5094fb21af3a90ede71c815bcd09a381863c6ee24",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "753WKE",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://letscoding.kr:8888/api/v1/account/child",
+							"protocol": "https",
+							"host": [
+								"letscoding",
+								"kr"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"child"
+							]
+						},
+						"description": "학생정보 요청하"
+					},
+					"response": []
+				},
 				{
 					"name": "t/register",
 					"request": {
@@ -359,13 +459,6 @@
 					},
 					"response": []
 				},
-
-
-
-
-
-
-
 				{
 					"name": "t/login",
 					"request": {
@@ -456,14 +549,6 @@
 					},
 					"response": []
 				},
-
-
-
-
-
-
-
-
 				{
 					"name": "send",
 					"request": {
