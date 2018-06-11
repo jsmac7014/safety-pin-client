@@ -21,19 +21,21 @@ export default {
                 allDay : false,
                 },
             ],
-            requestments: [{
-                id:123456
-            },
-            {
-                id:234567
-            }],
+            requestments: [
+                {
+                    id:123456
+                },
+                {
+                    id:234567
+                }
+            ],
             session: null
         }
     },
     methods: {
         loadRequestment() {
             const baseURI = 'https://letscoding.kr:8888/api/v1'
-            this.$http.get(`${baseURI}`, {
+            this.$http.get(`${baseURI}/`, {
                 params: {
                 "session": this.session
                 }

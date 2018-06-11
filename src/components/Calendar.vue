@@ -1,7 +1,7 @@
 <template>
   <section id="calendar">
     <p>방문 일정</p>
-    <FullCalendar :events="events" :selectable=false :editable=false :config="config"></FullCalendar>
+    <FullCalendar :events="events" :selectable=false :config="config" ></FullCalendar>
     <requestmentList />
   </section>
 </template>
@@ -26,9 +26,6 @@ export default {
           allDay : false,
         },
       ],
-      eventSources: [
-
-      ],
       config: {
         defaultView: 'month',
         locale: 'ko',
@@ -51,16 +48,18 @@ export default {
       })
       .then((result) => {
         this.events = result.data.calendar
-      })
+      }) 
       .catch((err) => {
         alert(err)
       })
     },
     getSession () {
       return this.$session.get('session')
-    }
+    },
   },
   created() {
+    if (!this.$session.exist)
+      this.$router.push('/SigninPlease')
     this.session = this.getSession()
     //this.loadCalendar(this.session)
     // setInterval(() => {
