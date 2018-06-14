@@ -1,6 +1,7 @@
 <template>
     <div>
         <Chat v-if="false" :roomId="undefined"/>
+        <p>hello this is chat</p>
     </div>
 </template>
 
