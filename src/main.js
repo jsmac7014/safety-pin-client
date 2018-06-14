@@ -4,13 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import VueSession from 'vue-session'
 import router from './router'
+import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import axios from 'axios'
 //import VueSocketIO from 'vue-socket.io'
-
 Vue.prototype.$http = axios
 
 //Vue.use(VueSocketIO, 'http://localhost:8080')
+Vue.use(Vuetify)
 Vue.use(VueSession)
 
 Vue.config.productionTip = false

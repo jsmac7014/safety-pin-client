@@ -1,6 +1,7 @@
 <template>
     <div>
         <Chat v-if="false" :roomId="undefined"/>
+        <p>hello this is chat</p>
     </div>
 </template>
 
@@ -18,7 +19,7 @@ export default {
         }
     },
     created() {
-        if (!this.$session.exist)
+        if (!this.$session.exists())
             this.$router.push('/SigninPlease')
         this.session = this.getSession()
     }

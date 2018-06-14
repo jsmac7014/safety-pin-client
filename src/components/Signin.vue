@@ -1,12 +1,30 @@
 <template>
-  <section>
-    <p>로그인</p>
-    <form>
-      <input type="email" v-model="email" id="signinEmail" placeholder="아이디"/>
-      <input type="password" v-model="password" id="signinPassword" placeholder="비밀번호"/>
-      <button id="LoginButton" @click="signin(email, password)">로그인!</button>
-    </form>
-  </section>
+  <v-app>
+    <v-content>
+      <v-container fluid fill-height class="form-container">
+        <v-layout align-center justify-center>
+          <v-flex xs12 sm6 md3>
+            <section>
+              <section class="logo">
+                <img src="./../assets/icon.png" alt="" srcset="">
+                <h1>Safety PIN</h1>
+              </section>
+              <v-card class="login-form">
+                <!-- <input type="email" v-model="email" id="signinEmail" placeholder="아이디"/> -->
+                <!-- <input type="password" v-model="password" id="signinPassword" placeholder="비밀번호"/> -->
+                <v-form>
+                  <v-text-field v-model="email" label="E-mail" required></v-text-field>
+                  <v-text-field v-model="password" label="Password" type="password" required></v-text-field>
+                  <v-btn color="info" flat @click="signin(email, password)">로그인</v-btn>
+                  <a href="#/signup" class="signup-link">계정이 없으신가요?</a>
+                </v-form>
+              </v-card>
+            </section>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
@@ -29,9 +47,6 @@ export default {
         return false
 
       this.signinMethod(this.session, email, password)
-      
-      //test
-      this.signupSuccessed("testSession");
     },
     signinMethod(session, email, password) {
         const baseURI = 'https://letscoding.kr:8888/api/v1'
@@ -41,29 +56,71 @@ export default {
           password: this.password
         })
         .then((result) => {
-          alert(result)
+          this.signinSuccessed(result.data.message.session);
         })
         .catch((err) => {
           alert(err)
         })
     },
-    signupSuccessed(session) {
+    signinSuccessed(session) {
       this.$session.start()
       this.$session.set('session', session)
       this.$router.push('/')
     },
     getSession () {
-        return this.$session.get('session')
+      return this.$session.get('session')
     }
   },
   created() {
-    if (this.$session.exist)
+    if (this.$session.exists())
       this.$router.push('/SignoutPlease')
     this.session = this.getSession()
   }
 }
 </script>
 
-<style>
+<style scoped>
+  *{
+    font-family: 'Nanum Gothic', sans-serif;
+  }
+  .form-container{  
+    background-color:#2682FF;
+  }
+  .logo{
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .logo img{
+    width: 120px;
+  }
+  .logo h1{
+    color: #fff;  
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 300;
+  }
+  .login-form{
+    height: 250px!important;  
+    padding: 15px; 
+    background-color: #fff;
+    color: #2682FF;
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .signup-link{
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #444444;
+  }
+  @media screen and (max-width: 420px){
 
+  }
 </style>

@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <header>
-      <router-link to="/">Main</router-link>
+      <!-- <router-link to="/">Main</router-link> -->
     </header>
-    <router-view class="card"/>
+    <router-view/>
   </div>
 </template>
 
@@ -19,7 +19,5 @@ export default {
 </script>
 
 <style>
-  body {
-    margin: 0;
-  }
+
 </style>
