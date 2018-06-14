@@ -47,9 +47,6 @@ export default {
         return false
 
       this.signinMethod(this.session, email, password)
-      
-      //test
-      this.signupSuccessed("testSession");
     },
     signinMethod(session, email, password) {
         const baseURI = 'https://letscoding.kr:8888/api/v1'
@@ -59,23 +56,23 @@ export default {
           password: this.password
         })
         .then((result) => {
-          alert(result)
+          this.signinSuccessed(result.data.message.session);
         })
         .catch((err) => {
           alert(err)
         })
     },
-    signupSuccessed(session) {
+    signinSuccessed(session) {
       this.$session.start()
       this.$session.set('session', session)
       this.$router.push('/')
     },
     getSession () {
-        return this.$session.get('session')
+      return this.$session.get('session')
     }
   },
   created() {
-    if (this.$session.exist)
+    if (this.$session.exists())
       this.$router.push('/SignoutPlease')
     this.session = this.getSession()
   }

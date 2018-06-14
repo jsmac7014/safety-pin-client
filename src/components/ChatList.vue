@@ -19,7 +19,7 @@ export default {
         }
     },
     created() {
-        if (!this.$session.exist)
+        if (!this.$session.exists())
             this.$router.push('/SigninPlease')
         this.session = this.getSession()
     }

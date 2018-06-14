@@ -22,7 +22,8 @@
                     </v-toolbar>
                     <v-list class="pt-0" dense>
                         <v-divider></v-divider>
-                        <v-list-tile v-for="item in items" :key="item.title" @click="">
+
+                        <v-list-tile v-for="item in items" :key="item.title">
                             <v-list-tile-action>
                                 <v-btn :to="item.to" icon>
                                     <v-icon>{{ item.icon }}</v-icon>
@@ -39,7 +40,8 @@
 
             <section class="content">
                 <v-layout column="">
-                    <v-jumbotron color="grey lighten-2">
+                    <v-jumbotron color="grey lighten-2" v-if="isLogin">
+
                         <v-container fill-height>
                             <v-layout align-center>
                                 <v-flex>
@@ -54,7 +56,18 @@
                             </v-layout>
                         </v-container>
                     </v-jumbotron>
-                    <v-layout row justify-center>
+                    <v-jumbotron color="grey lighten-2" v-else>
+                        <v-container fill-height>
+                            <v-layout align-center>
+                                <v-flex>
+                                    <h3 class="display-3">로그인 하세요</h3>
+                                    <span class="subheading">사이트에 왔음 로그인을 해야할 거 아녀 ㅡㅡ</span>
+                                    <v-btn large color="primary" class="mx-0" @click="loginButtonClicked()">Login</v-btn>
+                                </v-flex>
+                            </v-layout>
+                        </v-container>
+                    </v-jumbotron>
+                    <v-layout row justify-center v-if="isLogin">
                         <v-flex sm6 lg4>
                             <v-card>
                                 <v-list subheader>
@@ -86,7 +99,8 @@
                                         </v-list-tile-avatar>
                                         <v-list-tile-content>
                                             <v-list-tile-title v-html="contact.name"></v-list-tile-title>
-                                            <v-list-tile-sub-title class="text--primary">{{ }}</v-list-tile-sub-title>
+
+                                            <v-list-tile-sub-title class="text--primary"></v-list-tile-sub-title>
                                         </v-list-tile-content>
                                         <v-list-tile-action>
                                             <v-icon :color="contact.active ? 'teal' : 'grey'">chat_bubble</v-icon>
@@ -135,6 +149,7 @@ export default {
             ],
             right: null,
             mini: true,
+            isLogin: false
         }
     },
     methods: {
@@ -144,6 +159,14 @@ export default {
         signout() {
             this.$session.destroy()
             this.signed = this.$session.exists()
+        },
+        loginButtonClicked() {
+            this.$router.push("./signin")
+        }
+    },
+    created() {
+        if (this.$session.exists()) {
+            this.isLogin = true
         }
     }
 }
