@@ -138,10 +138,6 @@ export default {
         }
     },
     methods: {
-        sayId() {
-            if (this.$session.exists())
-                alert(`${this.$session.get('jwt').userId}님 환영해요!`)
-        },
         replaceLink(link) {
             this.$router.push(link)
         },

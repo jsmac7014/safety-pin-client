@@ -12,6 +12,16 @@ export default {
     name: 'Profile',
     components: {
         ParentsProfile
+    },
+    methods: {
+        getSession () {
+            return this.$session.get('session')
+        }
+    },
+    created() {
+        if (!this.$session.exist)
+            this.$router.push('/SigninPlease')
+        this.session = this.getSession()
     }
 }
 </script>

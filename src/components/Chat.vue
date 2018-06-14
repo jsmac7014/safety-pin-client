@@ -17,29 +17,40 @@ export default {
     ],
     data() {
         return {
-            isConnected: false,
-            socketMessage: ''
+            isConnected: false
         }
     },
-    // sockets: {
-    //     connect() {
-    //         this.isConnected = true;
-    //     },
-
-    //     disconnect() {
-    //         this.isConnected = false;
-    //     },
-
-    //     // Fired when the server sends something on the "messageChannel" channel.
-    //     messageChannel(data) {
-    //         this.socketMessage = data
-    //     }
-    // }, 
-    // methods: {
-    //     pingServer() {
-    //         //this.$socket.emit('pingServer', 'PING!')
-    //     }
-    // }
+    methods: {
+      loadNewMessage(session) {
+        const baseURI = 'https://letscoding.kr:8888/api/v1'
+        this.$http.get(`${baseURI}`, {
+          params: {
+            "session": session
+          }
+        })
+        .then((result) => {
+          this.events = result.data.calendar
+        })
+        .catch((err) => {
+          alert(err)
+        })
+      },
+      loadAllMessage(session) {
+        const baseURI = 'https://letscoding.kr:8888/api/v1'
+        this.$http.get(`${baseURI}`, {
+          params: {
+            "session":
+             session
+          }
+        })
+        .then((result) => {
+          this.events = result.data.calendar
+        })
+        .catch((err) => {
+          alert(err)
+        })
+      }
+    }
 }
 </script>
 

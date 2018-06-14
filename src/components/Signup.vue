@@ -36,7 +36,7 @@ export default {
       password: "",
       name: "",
       classNumber: "",
-      intro: ""
+      info: ""
     }
   },
   methods: {
@@ -49,26 +49,37 @@ export default {
       if(!this.checkForm(email, password))
         return false
 
-      const baseURI = 'https://tstserv.herokuapp.com'
-      this.$http.post(`${baseURI}/register`, {
-          params: {
-              email: email,
-              password: password
-          }
-      })
-      .then((result) => {
-        let data = result.data
-        this.signupSuccessed(data.session)
-      })
-      .catch((err) => {
-        alert(err)
-      })
+      this.signupMethod(this.session, email, password, classNumber, info)
     },
     signupSuccessed(session) {
       this.$session.start()
       this.$session.set('session', session)
       this.$router.push('/')
+    },
+    signupMethod(session, email, password, classNumber, info) {
+      const baseURI = 'https://letscoding.kr:8888/api/v1'
+      this.$http.post(`${baseURI}/account/t/register`, {
+        session: this.session,
+        email: this.email,
+        password: this.password,
+        class: this.classNumber,
+        info: this.info
+      })
+      .then((result) => {
+
+      })
+      .catch((err) => {
+        
+      })
+    },
+    getSession () {
+        return this.$session.get('session')
     }
+  },
+  created() {
+    if (this.$session.exist)
+      this.$router.push('/SignoutPlease')
+    this.session = this.getSession()
   }
 }
 </script>

@@ -17,9 +17,13 @@
     "material-design-icons-iconfont": "^3.0.3",
     "vue": "^2.5.2",
     "vue-full-calendar": "^2.5.4",
+    "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",
     "vue-session": "^1.0.0",
+<<<<<<< HEAD
     "vue-socket.io": "^2.1.1-b",
+=======
+>>>>>>> 64698fcd611b65d68131c4bb962d8599784275e2
     "vuetify": "^1.0.18"
   },
   "devDependencies": {

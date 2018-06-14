@@ -2,12 +2,17 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import axios from 'axios'
 import VueSession from 'vue-session'
 import router from './router'
+<<<<<<< HEAD
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 
+=======
+import 'vuetify/dist/vuetify.min.css'
+import axios from 'axios'
+//import VueSocketIO from 'vue-socket.io'
+>>>>>>> 64698fcd611b65d68131c4bb962d8599784275e2
 
 //import VueSocketIO from 'vue-socket.io'
 Vue.prototype.$http = axios

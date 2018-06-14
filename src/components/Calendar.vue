@@ -1,20 +1,20 @@
 <template>
   <section id="calendar">
     <p>방문 일정</p>
-    <FullCalendar :events="events" :selectable=false :editable=false></FullCalendar>
-    <!-- <AcceptRequestment :message="message"/> -->
+    <FullCalendar :events="events" :selectable=false :config="config" ></FullCalendar>
+    <requestmentList />
   </section>
 </template>
 
 <script>
 import { FullCalendar } from 'vue-full-calendar'
-import AcceptRequestment from '@/components/acceptRequestment'
+import requestmentList from '@/components/requestmentList.vue'
 
 export default {
   name: 'Calendar',
   components: {
     FullCalendar,
-    AcceptRequestment
+    requestmentList
   },
   data () {
     return {
@@ -26,55 +26,45 @@ export default {
           allDay : false,
         },
       ],
-      message: {
-        text: "제 상담을 받아주시겄나요?"
+      config: {
+        defaultView: 'month',
+        locale: 'ko',
+        header: {
+          left: 'prev,next',
+          center: 'title',
+          right: 'today'
+        },
       },
       session: null
     }
   },
   methods: {
     loadCalendar(session) {
-      const baseURI = 'https://tstserv.herokuapp.com'
-      this.$http.get(`${baseURI}/calendar`, {
+      const baseURI = 'https://letscoding.kr:8888/api/v1'
+      this.$http.get(`${baseURI}`, {
         params: {
-          "session": session
+          "session": this.session
         }
       })
       .then((result) => {
         this.events = result.data.calendar
-      })
-      .catch((err) => {
-        alert(err)
-      })
-    },
-    loadRequestment() {
-      const baseURI = 'https://tstserv.herokuapp.com'
-      this.$http.get(`${baseURI}/request`, {
-        params: {
-          "session": session
-        }
-      })
-      .then((result) => {
-        if (result.data.request) {
-
-        } else {
-
-        }
-      })
+      }) 
       .catch((err) => {
         alert(err)
       })
     },
     getSession () {
       return this.$session.get('session')
-    }
+    },
   },
   created() {
+    if (!this.$session.exist)
+      this.$router.push('/SigninPlease')
     this.session = this.getSession()
-    this.loadCalendar(this.session)
-    setInterval(() => {
-      this.loadRequestment()
-    }, 5000)
+    //this.loadCalendar(this.session)
+    // setInterval(() => {
+    //   this.loadRequestment()
+    // }, 5000)
   }
 }
 </script>
